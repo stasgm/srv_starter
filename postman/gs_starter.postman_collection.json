@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "d5879e60-38e0-4f52-9984-39cc8edd415f",
+		"name": "gs_starter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3080/api/v1/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"list"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Список дел 1\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"list"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete  list",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/list/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"list",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b325b480-63e7-11eb-a581-6106df013ba1",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit list",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/list/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"list",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b325b480-63e7-11eb-a581-6106df013ba1",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
