@@ -1,7 +1,7 @@
 import Dao from './types';
 import { IList } from '@models/types/app';
 import ListModel from '@models/list';
-import { Collection } from '../database/json-db';
+import { Collection } from '@database/json-db';
 
 class ListDao implements Dao<IList> {
   private model: Collection<IList>;
@@ -31,4 +31,4 @@ class ListDao implements Dao<IList> {
   };
 }
 
-export default ListRepository;
+export default ListDao;
