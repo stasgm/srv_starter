@@ -1,20 +1,12 @@
-import { Router } from 'express';
 import ListController from '@controllers/list';
+import { BaseRoute } from './base.route';
 
-class ListRoute {
-  private api: Router = Router();
-  private readonly controller: ListController;
-
+class ListRoute extends BaseRoute<ListController> {
   constructor() {
-    this.controller = new ListController();
-    this.routes();
+    super('/list', new ListController());
   }
 
-  public getApi(): Router {
-    return this.api;
-  }
-
-  private routes(): void {
+  protected routes(): void {
     this.api.get('/', this.controller.findAll.bind(this.controller));
     this.api.post('/', this.controller.addOne.bind(this.controller));
     this.api.get('/:id', this.controller.findOne.bind(this.controller));

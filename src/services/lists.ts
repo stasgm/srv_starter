@@ -1,15 +1,10 @@
 import { IList } from '../models/types';
-import ListRepository from '../repository/List';
-import Repository from '../repository/dao';
+import ListDao from '../models/dao/List';
+import { BaseService } from './base.service';
 
-/**
- * List service
- */
-export class ListService {
-  private dao: Dao<IList>;
-
+export class ListService extends BaseService<ListDao> {
   constructor() {
-    this.dao = new ListRepository();
+    super(new ListDao());
   }
 
   public async addOne(user: IList): Promise<string> {

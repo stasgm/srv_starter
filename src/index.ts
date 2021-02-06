@@ -1,4 +1,4 @@
-import 'module-alias/register'
+import 'module-alias/register';
 // require('module-alias/register')
 import App from './app';
 import log from '@logger';

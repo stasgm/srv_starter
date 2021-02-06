@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
 import log from '@logger';
-import { IndexRoute } from './routes';
+import { IndexRoute } from './routes/v1/';
 import environnement from '@config/environnement';
-import { expressLoader } from '@loaders';
+import { expressLoader } from '@config/loaders';
 import errorHandler from '@middleware/errorHandler';
 
 class App {

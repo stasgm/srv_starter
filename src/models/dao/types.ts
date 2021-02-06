@@ -9,7 +9,10 @@ export interface IWrite<T> {
   delete(id: string): Promise<void>;
 }
 
-export default abstract class Dao<T> implements IRead<T>, IWrite<T> {
+interface IEntity {
+  id: string;
+}
+export default abstract class BaseDao<T = IEntity> implements IRead<T>, IWrite<T> {
   public abstract create(item: T): Promise<string>;
   public abstract update(item: T): Promise<void>;
   public abstract delete(id: string): Promise<void>;

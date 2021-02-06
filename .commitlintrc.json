@@ -6,12 +6,13 @@
     "type-enum": [
       2,
       "always",
-      [
+      [       
         "feat",
         "fix",
         "build",
         "ci",
-        "docs",        
+        "chore",        
+        "docs",
         "refactor",
         "test",
         "types",

@@ -34,7 +34,7 @@
       "@helpers/*": ["src/helpers/*"],
       "@config/*": ["src/config/*"],
       "@database/*": ["src/database/*"],
-      "@loaders": ["src/loaders"],
+      "@loaders": ["src/config/loaders"],
       "@logger": ["src/helpers/logger"],
       "@models/*": ["src/models/*"],
       "@controllers/*": ["src/controllers/*"],

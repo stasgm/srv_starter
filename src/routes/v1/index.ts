@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import environnement from '../config/environnement';
+import environnement from '../../config/environnement';
 
-import ListRoute from './list';
+import ListRoute from './list.route';
 
 export class IndexRoute {
   [x: string]: unknown;

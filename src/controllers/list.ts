@@ -2,12 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 
 import { InvalidParameterException } from '../exceptions';
 import { ListService } from '@services/lists';
+import { BaseController } from './base.cotroller';
 
-class ListController {
-  private service: ListService;
-
+class ListController extends BaseController<ListService> {
   constructor() {
-    this.service = new ListService();
+    super(new ListService());
   }
 
   public async addOne(req: Request, res: Response, next: NextFunction) {
