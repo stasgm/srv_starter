@@ -1,16 +1,25 @@
 import { Router } from 'express';
-import environnement from '../../config/environnement';
+import environnement from '@config/environnement';
 
-import ListRoute from './list.route';
+import ClinicRoute from './clinic.route';
+import PersonRoute from './person.route';
+import ServiceRoute from './service.route';
+import VisitRoute from './visit.route';
 
 export class IndexRoute {
   [x: string]: unknown;
   private api: Router = Router();
-
-  private listRoute: ListRoute;
+  // переделать в массив
+  private clinicRoute: ClinicRoute;
+  private personRoute: PersonRoute;
+  private serviceRoute: ServiceRoute;
+  private visitRoute: VisitRoute;
 
   constructor() {
-    this.listRoute = new ListRoute();
+    this.clinicRoute = new ClinicRoute();
+    this.personRoute = new PersonRoute();
+    this.serviceRoute = new ServiceRoute();
+    this.visitRoute = new VisitRoute();
 
     this.routes();
   }
@@ -37,6 +46,9 @@ export class IndexRoute {
       res.sendStatus(200);
     });
 
-    this.api.use('/list', this.listRoute.getApi());
+    this.api.use(this.clinicRoute.getName(), this.clinicRoute.getApi());
+    this.api.use(this.personRoute.getName(), this.personRoute.getApi());
+    this.api.use(this.serviceRoute.getName(), this.serviceRoute.getApi());
+    this.api.use(this.visitRoute.getName(), this.visitRoute.getApi());
   }
 }

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { BaseController } from '../../controllers/base.cotroller';
+import BaseController from '../../controllers/base.cotroller';
 
-export abstract class BaseRoute<T extends BaseController = BaseController> {
+abstract class BaseRoute<T extends BaseController = BaseController> {
   protected api: Router = Router();
   protected readonly controller: T;
   protected readonly name: string;
@@ -13,7 +13,7 @@ export abstract class BaseRoute<T extends BaseController = BaseController> {
   }
 
   public getName() {
-    return this.name;
+    return `/${this.name}`;
   }
 
   public getApi(): Router {
@@ -22,3 +22,5 @@ export abstract class BaseRoute<T extends BaseController = BaseController> {
 
   protected abstract routes(): void;
 }
+
+export default BaseRoute;

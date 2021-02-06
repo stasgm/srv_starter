@@ -1,4 +1,4 @@
-import BaseDao from '@models/dao/types';
+import BaseDao from '@models/dao/base.dao';
 
 export abstract class BaseService<T extends BaseDao = BaseDao> {
   protected readonly dao: T;

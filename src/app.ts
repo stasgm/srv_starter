@@ -4,6 +4,7 @@ import { IndexRoute } from './routes/v1/';
 import environnement from '@config/environnement';
 import { expressLoader } from '@config/loaders';
 import errorHandler from '@middleware/errorHandler';
+import { errors } from 'celebrate';
 
 class App {
   private readonly app: Express;
@@ -48,6 +49,8 @@ class App {
   private routes(): void {
     // Routes middleware
     this.app.use('/api/v1/', this.indexRoute.getApi());
+
+    this.app.use(errors());
     // Error handler middleware
     this.app.use(errorHandler);
   }

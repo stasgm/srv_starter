@@ -22,8 +22,8 @@
     "eslint:fix": "eslint --fix \"src/**/*.ts\""
   },
   "dependencies": {
-    "@types/joi": "^17.2.3",
     "body-parser": "^1.19.0",
+    "celebrate": "^13.0.4",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -37,7 +37,6 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.3",
     "helmet": "^4.4.1",
-    "joi": "^17.3.0",
     "module-alias": "^2.2.2",
     "ramda": "^0.27.1",
     "ts-node": "^9.1.1",
@@ -87,12 +86,13 @@
   "_moduleAliases": {
     "@helpers": "src/helpers",
     "@config": "src/config",
-    "@database": "src/database",
+    "@databases": "src/databases",
     "@loaders": "src/loaders",
     "@logger": "src/helpers/logger",
     "@models": "src/models",
     "@controllers": "src/controllers",
     "@middleware": "src/middleware",
-    "@services": "src/services"
+    "@services": "src/services",
+    "@validations": "src/validations"
   }
 }

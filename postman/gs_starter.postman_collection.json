@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "list",
+			"name": "clinics",
 			"item": [
 				{
 					"name": "Get All",
@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3080/api/v1/list",
+							"raw": "http://localhost:3080/api/v1/clinics",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -23,7 +23,7 @@
 							"path": [
 								"api",
 								"v1",
-								"list"
+								"clinics"
 							]
 						},
 						"description": "Добавить новый список"
@@ -31,13 +31,13 @@
 					"response": []
 				},
 				{
-					"name": "Add a new list",
+					"name": "add",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Список дел 1\"    \r\n}",
+							"raw": "{\r\n    \"name\": \"15 поликлиника\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3080/api/v1/list",
+							"raw": "http://localhost:3080/api/v1/clinics",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -54,7 +54,7 @@
 							"path": [
 								"api",
 								"v1",
-								"list"
+								"clinics"
 							]
 						},
 						"description": "Добавить новый список"
@@ -62,7 +62,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete  list",
+					"name": "delete",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -76,7 +76,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3080/api/v1/list/:id",
+							"raw": "http://localhost:3080/api/v1/clinics/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -85,7 +85,7 @@
 							"path": [
 								"api",
 								"v1",
-								"list",
+								"clinics",
 								":id"
 							],
 							"variable": [
@@ -101,9 +101,106 @@
 					"response": []
 				},
 				{
-					"name": "Edit list",
+					"name": "edit",
 					"request": {
-						"method": "PUT",
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"bab06650-63e7-11eb-a581-6106df013ba1\",\r\n    \"name\": \"Список дел 2\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/clinics/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "77",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "persons",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3080/api/v1/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"persons"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"15 поликлиника\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"persons"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -115,7 +212,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3080/api/v1/list/:id",
+							"raw": "http://localhost:3080/api/v1/persons/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -124,13 +221,324 @@
 							"path": [
 								"api",
 								"v1",
-								"list",
+								"persons",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
 									"value": "b325b480-63e7-11eb-a581-6106df013ba1",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"bab06650-63e7-11eb-a581-6106df013ba1\",\r\n    \"name\": \"Список дел 2\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/persons/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"persons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "77",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "services",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3080/api/v1/services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"services"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Массаж\",\r\n    \"duration\": \"1 час\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"services"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/services/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b325b480-63e7-11eb-a581-6106df013ba1",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"bab06650-63e7-11eb-a581-6106df013ba1\",\r\n    \"name\": \"Список дел 2\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/services/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"services",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "77",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "visits",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3080/api/v1/visits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"visits"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Массаж\",\r\n    \"duration\": \"1 час\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/visits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"visits"
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/visits/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"visits",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "b325b480-63e7-11eb-a581-6106df013ba1",
+									"type": "string"
+								}
+							]
+						},
+						"description": "Добавить новый список"
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"bab06650-63e7-11eb-a581-6106df013ba1\",\r\n    \"name\": \"Список дел 2\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3080/api/v1/visits/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3080",
+							"path": [
+								"api",
+								"v1",
+								"visits",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "77",
 									"type": "string"
 								}
 							]

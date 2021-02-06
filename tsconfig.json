@@ -33,13 +33,15 @@
     "paths": {
       "@helpers/*": ["src/helpers/*"],
       "@config/*": ["src/config/*"],
-      "@database/*": ["src/database/*"],
+      "@databases/*": ["src/databases/*"],
       "@loaders": ["src/config/loaders"],
       "@logger": ["src/helpers/logger"],
       "@models/*": ["src/models/*"],
+      "@models": ["src/models/index"],      
       "@controllers/*": ["src/controllers/*"],
       "@middleware/*": ["src/middleware/*"],
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@validations/*": ["src/validations/*"]
     }
   },
   "lib": ["ESNext"]
