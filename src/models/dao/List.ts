@@ -1,9 +1,9 @@
-import Repository from './Repository';
+import Dao from './types';
 import { IList } from '@models/types/app';
 import ListModel from '@models/list';
 import { Collection } from '../database/json-db';
 
-class ListRepository implements Repository<IList> {
+class ListDao implements Dao<IList> {
   private model: Collection<IList>;
 
   constructor() {

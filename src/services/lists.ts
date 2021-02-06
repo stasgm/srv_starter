@@ -1,12 +1,12 @@
 import { IList } from '../models/types';
 import ListRepository from '../repository/List';
-import Repository from '../repository/Repository';
+import Repository from '../repository/dao';
 
 /**
  * List service
  */
 export class ListService {
-  private dao: Repository<IList>;
+  private dao: Dao<IList>;
 
   constructor() {
     this.dao = new ListRepository();

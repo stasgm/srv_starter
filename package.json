@@ -5,11 +5,11 @@
   "license": "UNLICENCED",
   "author": "Stanislau Shliakhtsich",
   "scripts": {
-    "pm2:start": "pm2 start ./dist/src/index.js --watch --name web-serivce",
+    "pm2:start": "pm2 start ./dist/index.js --watch --name web-serivce",
     "pm2:status": "pm2 status web-serivce",
     "pm2:stop": "pm2 stop web-serivce",
     "pm2:mon": "pm2 monit web-serivce",
-    "start": "node dist/src/index.js",
+    "start": "node dist/index.js",
     "build": "tsc",
     "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json",
     "debug": "cross-env NODE_ENV=development nodemon --config nodemon-debug.json",

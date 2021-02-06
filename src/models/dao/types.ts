@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 export interface IRead<T> {
   findOne(id: string): Promise<T>;
   getAll(): Promise<T[]>;
@@ -10,7 +9,7 @@ export interface IWrite<T> {
   delete(id: string): Promise<void>;
 }
 
-export default abstract class Repository<T> implements IRead<T>, IWrite<T> {
+export default abstract class Dao<T> implements IRead<T>, IWrite<T> {
   public abstract create(item: T): Promise<string>;
   public abstract update(item: T): Promise<void>;
   public abstract delete(id: string): Promise<void>;

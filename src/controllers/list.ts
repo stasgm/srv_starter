@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { InvalidParameterException } from '../exceptions';
-import { ListService } from '@services/list';
+import { ListService } from '@services/lists';
 
 class ListController {
   private service: ListService;
