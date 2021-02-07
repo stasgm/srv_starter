@@ -10,6 +10,6 @@ export class DataNotFoundException extends ApplicationException {
    * @param context Request context and more details
    */
   constructor(context: string) {
-    super('DocumentNotFoundException', 404, `data not found - ${context}`);
+    super('DocumentNotFoundException', 404, `Bad Request : data not found - ${context}`);
   }
 }

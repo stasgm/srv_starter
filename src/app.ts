@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import log from '@logger';
-import { IndexRoute } from './routes/v1/';
+import IndexRouteV1 from './routes/v1/';
 import environnement from '@config/environnement';
 import { expressLoader } from '@config/loaders';
 import errorHandler from '@middleware/errorHandler';
@@ -8,12 +8,12 @@ import { errors } from 'celebrate';
 
 class App {
   private readonly app: Express;
-  private indexRoute!: IndexRoute;
+  private indexRouteV1: IndexRouteV1;
 
   constructor() {
     this.app = express(); // create expressjs application
     this.config(); // configure application
-    this.indexRoute = new IndexRoute(); //add routes handlers
+    this.indexRouteV1 = new IndexRouteV1(); //add routes handlers
     this.routes(); // set routes
     this.listen(); // start server
   }
@@ -48,7 +48,7 @@ class App {
    */
   private routes(): void {
     // Routes middleware
-    this.app.use('/api/v1/', this.indexRoute.getApi());
+    this.app.use('/api/v1/', this.indexRouteV1.getApi());
 
     this.app.use(errors());
     // Error handler middleware

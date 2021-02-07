@@ -81,7 +81,6 @@ class Collection<T extends CollectionItem> {
   public async delete(id: string): Promise<void>;
   public async delete(predicate: (item: T) => boolean): Promise<void>;
   public async delete(id: string | ((item: T) => boolean)) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const predicate = typeof id === 'function' ? R.pipe(id, R.not) : (item: T) => item.id !== id;
 
     const db = await this._get();

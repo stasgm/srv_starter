@@ -84,15 +84,14 @@
     }
   },
   "_moduleAliases": {
-    "@helpers": "src/helpers",
+    "@common": "src/common",    
     "@config": "src/config",
     "@databases": "src/databases",
+    "@helpers": "src/helpers",    
     "@loaders": "src/loaders",
     "@logger": "src/helpers/logger",
     "@models": "src/models",
-    "@controllers": "src/controllers",
-    "@middleware": "src/middleware",
-    "@services": "src/services",
-    "@validations": "src/validations"
+    "@components": "src/components",
+    "@middleware": "src/middleware"
   }
 }

@@ -1,25 +1,24 @@
 import { Router } from 'express';
 import environnement from '@config/environnement';
+import ClinicsRoute from '@components/clinics/clinics.route';
+import PersonsRoute from '@components/persons/persons.route';
+import ServicesRoute from '@components/services/services.route';
+import VisitsRoute from '@components/visits/visits.route';
 
-import ClinicRoute from './clinic.route';
-import PersonRoute from './person.route';
-import ServiceRoute from './service.route';
-import VisitRoute from './visit.route';
-
-export class IndexRoute {
+class IndexRoute {
   [x: string]: unknown;
   private api: Router = Router();
   // переделать в массив
-  private clinicRoute: ClinicRoute;
-  private personRoute: PersonRoute;
-  private serviceRoute: ServiceRoute;
-  private visitRoute: VisitRoute;
+  private clinicsRoute: ClinicsRoute;
+  private personsRoute: PersonsRoute;
+  private servicesRoute: ServicesRoute;
+  private visitsRoute: VisitsRoute;
 
   constructor() {
-    this.clinicRoute = new ClinicRoute();
-    this.personRoute = new PersonRoute();
-    this.serviceRoute = new ServiceRoute();
-    this.visitRoute = new VisitRoute();
+    this.clinicsRoute = new ClinicsRoute();
+    this.personsRoute = new PersonsRoute();
+    this.servicesRoute = new ServicesRoute();
+    this.visitsRoute = new VisitsRoute();
 
     this.routes();
   }
@@ -46,9 +45,11 @@ export class IndexRoute {
       res.sendStatus(200);
     });
 
-    this.api.use(this.clinicRoute.getName(), this.clinicRoute.getApi());
-    this.api.use(this.personRoute.getName(), this.personRoute.getApi());
-    this.api.use(this.serviceRoute.getName(), this.serviceRoute.getApi());
-    this.api.use(this.visitRoute.getName(), this.visitRoute.getApi());
+    this.api.use(this.clinicsRoute.getName(), this.clinicsRoute.getApi());
+    this.api.use(this.personsRoute.getName(), this.personsRoute.getApi());
+    this.api.use(this.servicesRoute.getName(), this.servicesRoute.getApi());
+    this.api.use(this.visitsRoute.getName(), this.visitsRoute.getApi());
   }
 }
+
+export default IndexRoute;

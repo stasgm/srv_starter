@@ -31,6 +31,7 @@
     "pretty": true /* Stylize errors and messages using color and context. */,
 
     "paths": {
+      "@common/*": ["src/common/*"],
       "@helpers/*": ["src/helpers/*"],
       "@config/*": ["src/config/*"],
       "@databases/*": ["src/databases/*"],
@@ -38,10 +39,8 @@
       "@logger": ["src/helpers/logger"],
       "@models/*": ["src/models/*"],
       "@models": ["src/models/index"],      
-      "@controllers/*": ["src/controllers/*"],
+      "@components/*": ["src/components/*"],
       "@middleware/*": ["src/middleware/*"],
-      "@services/*": ["src/services/*"],
-      "@validations/*": ["src/validations/*"]
     }
   },
   "lib": ["ESNext"]
