@@ -8,23 +8,23 @@ abstract class BaseService<U extends IEntity = IEntity, T extends BaseDao<U> = B
     this.dao = dao;
   }
 
-  public async addOne(item: U): Promise<string> {
+  public addOne = async (item: U): Promise<string> => {
     return await this.dao.create(item);
   }
 
-  public async getAll(): Promise<U[]> {
+  public getAll = async (): Promise<U[]> => {
     return await this.dao.getAll();
   }
 
-  public async findOne(id: string): Promise<U> {
+  public findOne = async (id: string): Promise<U> => {
     return await this.dao.findOne(id);
   }
 
-  public async updateOne(item: U): Promise<void> {
+  public updateOne = async (item: U): Promise<void> => {
     return await this.dao.update(item);
   }
 
-  public async deleteOne(id: string): Promise<void> {
+  public deleteOne = async (id: string): Promise<void> => {
     return await this.dao.delete(id);
   }
 }

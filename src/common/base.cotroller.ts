@@ -1,18 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import BaseService from '@common/base.service';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Response } from 'express';
 import { InvalidParameterException } from '../exceptions';
 import { IEntity } from '../models/interfaces';
+import { IApiResponse, IRequest, IResponse } from './interfaces';
 
 abstract class BaseController<U extends IEntity = IEntity, T extends BaseService<U> = BaseService<U>> {
-  // abstract class BaseController<T extends BaseService = BaseService> {
   protected readonly service: T;
 
   constructor(service: T) {
     this.service = service;
   }
 
-  public async addOne(req: Request, res: Response, next: NextFunction) {
+  public async addOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
     try {
       const item = await this.service.addOne(req.body);
       this.created(res, item);
@@ -21,7 +20,7 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public async findAll(req: Request, res: Response, next: NextFunction) {
+  public async findAll(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
     try {
       const obj = await this.service.getAll();
 
@@ -31,10 +30,9 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public async findOne(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-
+  public async findOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
     try {
+      const { id } = req.params;
       const obj = await this.service.findOne(id);
 
       if (!obj) {
@@ -47,17 +45,16 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public async updateOne(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-
+  public async updateOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
     try {
+      const { id } = req.params;
       const obj = await this.service.findOne(id);
 
       if (!obj) {
         throw new InvalidParameterException('invalid id');
       }
 
-      await this.service.updateOne(req.body);
+      await this.service.updateOne({ ...obj, ...req.body });
 
       this.ok(res);
     } catch (error) {
@@ -65,9 +62,9 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public async deleteOne(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
+  public async deleteOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
     try {
+      const { id } = req.params;
       const obj = await this.service.findOne(id);
 
       if (!obj) {
@@ -82,24 +79,34 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public static jsonResponse(res: Response, code: number, message: string | Record<string, unknown>) {
-    return res.status(code).json({ message });
+  public static jsonResponse<T>(res: Response, resp: IApiResponse<T>) {
+    return res.status(resp.statusCode).json(resp);
   }
 
   public ok<T>(res: Response, dto?: T) {
+    const resp: IApiResponse<T> = {
+      statusCode: 200,
+      message: 'ok',
+    };
+
     if (dto) {
-      // return BaseController.jsonResponse(res, 201, { data: dto });
-      return res.status(200).json(dto);
+      resp.data = dto;
     }
-    return res.sendStatus(200).json({});
+
+    return BaseController.jsonResponse(res, resp);
   }
 
   public created<T>(res: Response, dto?: T) {
+    const resp: IApiResponse<T> = {
+      statusCode: 201,
+      message: 'successfully created',
+    };
+
     if (dto) {
-      // return BaseController.jsonResponse(res, 201, { data: dto });
-      return res.status(200).json(dto);
+      resp.data = dto;
     }
-    return res.sendStatus(201);
+
+    return BaseController.jsonResponse(res, resp);
   }
 }
 

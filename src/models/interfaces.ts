@@ -1,33 +1,25 @@
-interface IApiResponse<T = string> {
-  error?: string;
-  message?: string;
-  statusCode?: number;
-  data?: T;
-}
+import { INamedEntity } from '@common/references/interfaces';
 
 interface IEntity {
   id: string;
 }
-interface IClinic extends IEntity {
-  name: string;
+interface IClinic extends INamedEntity {
   address?: string;
 }
 
-interface IService extends IEntity {
-  name: string;
+interface IService extends INamedEntity {
   duration: string;
 }
 
-interface IPerson extends IEntity {
-  name: string;
+interface IPerson extends INamedEntity {
   phone?: string;
 }
 
 interface IVisit extends IEntity {
   dateTime: Date;
   clinicId: string;
-  personId: IPerson;
-  serviceId: IService;
+  personId: string;
+  serviceId: string;
 }
 
 type Method = 'add' | 'patch';
@@ -36,4 +28,4 @@ type IValidation = {
   [name in Method]: Record<string, unknown>;
 };
 
-export { IEntity, IClinic, IService, IPerson, IVisit, IApiResponse, IValidation };
+export { IEntity, IClinic, IService, IPerson, IVisit, IValidation };

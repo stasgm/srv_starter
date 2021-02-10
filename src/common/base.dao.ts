@@ -1,16 +1,6 @@
 import { Collection } from '@databases/json-db';
 import { IEntity } from '@models/interfaces';
-
-export interface IRead<T> {
-  findOne(id: string): Promise<T>;
-  getAll(): Promise<T[]>;
-}
-
-export interface IWrite<T> {
-  create(item: T): Promise<string>;
-  update(item: T): Promise<void>;
-  delete(id: string): Promise<void>;
-}
+import { IRead, IWrite } from './interfaces';
 
 abstract class BaseDao<T extends IEntity = IEntity> implements IRead<T>, IWrite<T> {
   protected readonly model: Collection<T>;
@@ -20,7 +10,7 @@ abstract class BaseDao<T extends IEntity = IEntity> implements IRead<T>, IWrite<
   }
 
   public create = async (item: T): Promise<string> => {
-    return this.model.insert(item);
+    return this.model.insert((item as unknown) as T);
   };
 
   public update = async (item: T): Promise<void> => {

@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express, NextFunction } from 'express';
 import log from '@logger';
 import IndexRouteV1 from './routes/v1/';
 import environnement from '@config/environnement';
