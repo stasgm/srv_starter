@@ -1,4 +1,4 @@
-import express, { Express, NextFunction } from 'express';
+import express, { Express } from 'express';
 import log from '@logger';
 import IndexRouteV1 from './routes/v1/';
 import environnement from '@config/environnement';
@@ -49,7 +49,7 @@ class App {
   private routes(): void {
     // Routes middleware
     this.app.use('/api/v1/', this.indexRouteV1.getApi());
-
+    // Celebrate error handler middleware
     this.app.use(errors());
     // Error handler middleware
     this.app.use(errorHandler);

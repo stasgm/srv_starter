@@ -2,18 +2,22 @@ import BaseService from '@common/base.service';
 import { NextFunction, Response } from 'express';
 import { InvalidParameterException } from '../exceptions';
 import { IEntity } from '../models/interfaces';
+import BaseMapper from './base.mapper';
 import { IApiResponse, IRequest, IResponse } from './interfaces';
 
 abstract class BaseController<U extends IEntity = IEntity, T extends BaseService<U> = BaseService<U>> {
   protected readonly service: T;
+  protected readonly mapper: BaseMapper<U>;
 
-  constructor(service: T) {
+  constructor(service: T, mapper: BaseMapper<U>) {
     this.service = service;
+    this.mapper = mapper;
   }
 
-  public async addOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
+  public async addOne(req: IRequest<unknown>, res: IResponse<string>, next: NextFunction) {
     try {
-      const item = await this.service.addOne(req.body);
+      const obj = await this.mapper.map(req.body);
+      const item = await this.service.addOne(obj);
       this.created(res, item);
     } catch (error) {
       next(error);
@@ -45,7 +49,7 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public async updateOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
+  public async updateOne(req: IRequest<U>, res: IResponse<void>, next: NextFunction) {
     try {
       const { id } = req.params;
       const obj = await this.service.findOne(id);
@@ -62,7 +66,7 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
     }
   }
 
-  public async deleteOne(req: IRequest<U>, res: IResponse<Partial<U>>, next: NextFunction) {
+  public async deleteOne(req: IRequest<U>, res: IResponse<void>, next: NextFunction) {
     try {
       const { id } = req.params;
       const obj = await this.service.findOne(id);

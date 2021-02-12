@@ -3,6 +3,7 @@ import { INamedEntity } from '@common/references/interfaces';
 interface IEntity {
   id: string;
 }
+
 interface IClinic extends INamedEntity {
   address?: string;
 }
@@ -17,9 +18,9 @@ interface IPerson extends INamedEntity {
 
 interface IVisit extends IEntity {
   dateTime: Date;
-  clinicId: string;
-  personId: string;
-  serviceId: string;
+  clinic: IClinic;
+  person: IPerson;
+  service: IService;
 }
 
 type Method = 'add' | 'patch';
