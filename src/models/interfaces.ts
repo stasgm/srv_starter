@@ -17,14 +17,14 @@ interface IPerson extends INamedEntity {
 }
 
 interface IVisit extends IEntity {
-  dateTime: Date;
+  datetime: Date;
   clinic: IClinic;
   person: IPerson;
   service: IService;
 }
 
 interface IDtoVisit extends IEntity {
-  dateTime: Date;
+  datetime: string;
   clinicId: string;
   personId: string;
   serviceId: string;
@@ -36,4 +36,4 @@ type IValidation = {
   [name in Method]: Record<string, unknown>;
 };
 
-export { IEntity, IClinic, IService, IPerson, IVisit, IValidation };
+export { IEntity, IClinic, IService, IPerson, IVisit, IValidation, IDtoVisit };

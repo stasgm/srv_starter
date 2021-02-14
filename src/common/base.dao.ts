@@ -5,6 +5,7 @@ import { IRead, IWrite } from './interfaces';
 abstract class BaseDao<T extends IEntity = IEntity> implements IRead<T>, IWrite<T> {
   protected readonly model: Collection<T>;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(model: Collection<any>) {
     this.model = model;
   }

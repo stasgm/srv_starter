@@ -7,7 +7,7 @@ import PersonService from '../persons/persons.service';
 import ServiceService from '../services/services.service';
 
 export interface IVisitDto {
-  dateTime: string;
+  datetime: string;
   clinicId: string;
   personId: string;
   serviceId: string;
@@ -17,7 +17,7 @@ class Mapper extends BaseMapper<IVisit> {
   public async map(newObject: IVisitDto): Promise<IVisit> {
     const clinicService = new ClinicService();
 
-    const { dateTime, clinicId, personId, serviceId } = newObject;
+    const { datetime, clinicId, personId, serviceId } = newObject;
 
     const clinic = await clinicService.findOne(clinicId);
 
@@ -42,7 +42,7 @@ class Mapper extends BaseMapper<IVisit> {
     service;
     return {
       id: uuid(),
-      dateTime: new Date(dateTime),
+      datetime: new Date(datetime),
       clinic,
       person,
       service,
