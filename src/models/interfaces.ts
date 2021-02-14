@@ -23,6 +23,13 @@ interface IVisit extends IEntity {
   service: IService;
 }
 
+interface IDtoVisit extends IEntity {
+  dateTime: Date;
+  clinicId: string;
+  personId: string;
+  serviceId: string;
+}
+
 type Method = 'add' | 'patch';
 
 type IValidation = {

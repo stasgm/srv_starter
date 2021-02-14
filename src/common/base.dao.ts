@@ -5,12 +5,12 @@ import { IRead, IWrite } from './interfaces';
 abstract class BaseDao<T extends IEntity = IEntity> implements IRead<T>, IWrite<T> {
   protected readonly model: Collection<T>;
 
-  constructor(model: Collection<T>) {
+  constructor(model: Collection<any>) {
     this.model = model;
   }
 
   public create = async (item: T): Promise<string> => {
-    return this.model.insert((item as unknown) as T);
+    return this.model.insert(item);
   };
 
   public update = async (item: T): Promise<void> => {
