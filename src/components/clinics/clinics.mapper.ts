@@ -5,7 +5,7 @@ import { IClinic } from '../../models/interfaces';
 type ClinicDto = Omit<IClinic, 'id'>;
 
 class Mapper extends BaseMapper<IClinic> {
-  public map(newObject: ClinicDto): IClinic {
+  public mapToNewObject(newObject: ClinicDto): IClinic {
     return {
       id: uuid(),
       ...newObject,

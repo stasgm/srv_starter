@@ -5,7 +5,7 @@ import { IService } from '../../models/interfaces';
 type ServiceDto = Omit<IService, 'id'>;
 
 class Mapper extends BaseMapper<IService> {
-  public map(newObject: ServiceDto): IService {
+  public mapToNewObject(newObject: ServiceDto): IService {
     return {
       id: uuid(),
       ...newObject,

@@ -5,7 +5,7 @@ import { IPerson } from '../../models/interfaces';
 type PersonDto = Omit<IPerson, 'id'>;
 
 class Mapper extends BaseMapper<IPerson> {
-  public map(newObject: PersonDto): IPerson {
+  public mapToNewObject(newObject: PersonDto): IPerson {
     return {
       id: uuid(),
       ...newObject,

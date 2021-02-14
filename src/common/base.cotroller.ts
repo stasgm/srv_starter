@@ -16,7 +16,7 @@ abstract class BaseController<U extends IEntity = IEntity, T extends BaseService
 
   public async addOne(req: IRequest<U>, res: IResponse<string>, next: NextFunction) {
     try {
-      const obj = await this.mapper.map(req.body);
+      const obj = await this.mapper.mapToNewObject(req.body);
       const item = await this.service.addOne(obj);
       this.created(res, item);
     } catch (error) {
